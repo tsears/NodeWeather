@@ -1,0 +1,14 @@
+{
+  "AWSTemplateFormatVersion": "2010-09-09",
+  "Transform": "AWS::Serverless-2016-10-31",
+  "Resources": {
+    "GetWeather": {
+      "Type": "AWS::Serverless::Function",
+      "Properties": {
+        "Handler": "dist/bundle.handler",
+        "Runtime": "nodejs6.10",
+        "CodeUri": "/Users/tsears/code/NodeWeather",
+      }
+    }
+  }
+}

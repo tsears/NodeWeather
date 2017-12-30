@@ -1,0 +1,24 @@
+{
+  "name": "weather",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "node_modules/.bin/webpack",
+    "package": "aws cloudformation package --template-file weather-cf.json --output-template-file weather-deploy.yaml --s3-bucket tsears-weather",
+    "deploy": "aws cloudformation deploy --template-file weather-deploy.yaml --stack-name weather --capabilities CAPABILITY_IAM",
+    "start": "npm run build && node_modules/.bin/lambda-local -l dist/bundle.js -h handler -e query.js",
+    "go": "npm run build && npm run package && npm run deploy"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "node-rest-client": "^3.1.0"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "lambda-local": "^1.4.5"
+  }
+}
