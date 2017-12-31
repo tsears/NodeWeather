@@ -22,11 +22,12 @@ _Do this and get it working before worrying about deployment_
 ## Deploy ##
 
 1. Set up your [aws cli](https://docs.aws.amazon.com/lambda/latest/dg/setup-awscli.html)
-2. Update weather-cf.json with your path
-3. Update the package script in package.json with your s3 bucket
-4. Run the go script 
+2. Configure IAM to allow the deployment of all of the various components (have fun)
+3. Update weather-cf.json with your path
+4. Update the package script in package.json with your s3 bucket
+5. Run the go script 
    ~~~
    npm run go
    ~~~
    The lambda should be deployed to aws.
-5. In the lambda console, add your api keys for geocodio and dark sky (GEOCODIO_API_KEY and DARKSKY_API_KEY)
+66. In the lambda console, add your api keys for geocodio and dark sky (GEOCODIO_API_KEY and DARKSKY_API_KEY)
