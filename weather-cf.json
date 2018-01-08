@@ -93,14 +93,6 @@
         "StageName": "DummyStage"
       }
     },
-    "WeatherResource": {
-      "Type": "AWS::ApiGateway::Resource",
-      "Properties": {
-        "RestApiId": {"Ref": "WeatherApi"},
-        "ParentId": {"Fn::GetAtt": ["WeatherApi", "RootResourceId"]},
-        "PathPart": "weather"
-      }
-    },
     "WeatherRequest": {
       "DependsOn": "LambdaPermission",
       "Type": "AWS::ApiGateway::Method",
@@ -127,7 +119,7 @@
         "RequestParameters": {
           "method.request.querystring.query": false
         },
-        "ResourceId": {"Ref": "WeatherResource"},
+        "ResourceId": { "Fn::GetAtt": ["WeatherApi", "RootResourceId"] },
         "RestApiId": {"Ref": "WeatherApi"},
         "MethodResponses": [{
           "StatusCode": 200
